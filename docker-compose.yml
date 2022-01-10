@@ -1,0 +1,20 @@
+version: "3.3"
+services:
+  cloudflare-ddns-ipv4:
+    image: oznu/cloudflare-ddns
+    container_name: cloudflare-ddns-ipv4
+    restart: unless-stopped
+    network_mode: host
+    env_file:
+      - ./.env
+    environment:
+      - RRTYPE=A
+  cloudflare-ddns-ipv6:
+    image: oznu/cloudflare-ddns
+    container_name: cloudflare-ddns-ipv6
+    restart: unless-stopped
+    env_file:
+      - ./.env
+    network_mode: host
+    environment:
+      - RRTYPE=AAAA
